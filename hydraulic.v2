@@ -8,7 +8,7 @@
         "id": "6mYSH1yDOwvw"
       },
       "outputs": [],
-      "source":    [
+      "source":   [
         "#@title { form-width: \"2%\" }\n",
         "#@markdown\n",
         " \n",
@@ -2422,12 +2422,13 @@
         "\n",
         "def download1337x(result: DownloadResult, attrs: DownloadAttrs):\n",
         "    info(f'Adding download {attrs.name} from search.')\n",
+        "    maintabs.selected_index = appstate.tab_indices[ADD_TAB]\n",
         "    switchview(navcontainer(ADD_TAB), getloadingview(f'Adding download from search results.'), temp= True)\n",
-        "    download = requests.get(result.href)\n",
-        "    soup = BeautifulSoup(download.text, \"html.parser\")\n",
+        "    downloadpage = requests.get(result.href)\n",
+        "    soup = BeautifulSoup(downloadpage.text, \"html.parser\")\n",
         "    attrs.site_source = X1337X  \n",
         "    hash = soup.find(class_=\"infohash-box\").span.text.strip()  \n",
-        "    addresult =  add_hash_download(hash, attrs, result.title)\n",
+        "    addresult =  add_hash_download(hash, attrs)\n",
         "    process_adddownload_result(addresult)\n",
         "     \n",
         "#### API / File Manager\n",
@@ -4541,7 +4542,6 @@
         "    resulttable.style.apply(lambda s : [download_css for i in range(len(s))], subset=[' '])\n",
         "    def downloadresultclick_handler(e):\n",
         "        if e.column == ' ':\n",
-        "            maintabs.selected_index = appstate.tab_indices[ADD_TAB]\n",
         "            adddownload = result.results[e.row]\n",
         "            download1337x(adddownload, result.attrs)\n",
         "\n",
