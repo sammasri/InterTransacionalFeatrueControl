@@ -5260,11 +5260,11 @@
         "release()\n",
         "\n",
         "if IS_ENV_COLAB:\n",
-        "    makeclickjs(UICLICKER_RUN, 200, use_evaljs= True, enable_console= False)\n",
         "    output.clear() \n",
         "\n",
+        "js = makeclickjs(UICLICKER_RUN, 200, use_evaljs= False, enable_console= False, getstr= True)\n",
         "if not dev:\n",
-        "    display(container)\n",
+        "    display(container, js)\n",
         "\n",
         "# to debug and see exceptions turn off all back threads."
       ]
