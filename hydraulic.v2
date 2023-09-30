@@ -5262,9 +5262,10 @@
         "if IS_ENV_COLAB:\n",
         "    output.clear() \n",
         "\n",
+        "# using Javascript is persisted\n",
         "js = makeclickjs(UICLICKER_RUN, 200, use_evaljs= False, enable_console= False, getstr= True)\n",
         "if not dev:\n",
-        "    display(container, js)\n",
+        "    display(container, Javascript(js))\n",
         "\n",
         "# to debug and see exceptions turn off all back threads."
       ]
