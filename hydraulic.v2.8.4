@@ -11,8 +11,7 @@
       "source": [
         "#@title { form-width: \"2%\" }\n",
         "#@markdown\n",
-        "# 34wlsa\n",
-        "\n",
+        "# \n",
         "dev = False\n",
         "\n",
         "import os, sys, platform, pytz, time, traceback, unicodedata, re, requests, random\n",
@@ -4821,6 +4820,8 @@
         "adddownloads_vbox = VBox((addr1_hbox, addr2viewcontainer_vbox), layout= mainbox_layout)\n",
         "adddownloads_vbox.name = \"Add Tab\"\n",
         "adddownloads_vbox.add_class('curved-40')\n",
+        "addreplacemerge_label.add_class(\"label-flex\")\n",
+        "addbackup_label.add_class(\"label-flex\")\n",
         "setviewelements(adddownloads_vbox, addr2viewcontainer_vbox, addr2view1_adddownload_vbox, addback_btn, ADD_TAB)\n",
         "\n",
         "### Tab Monitor\n",
@@ -5590,6 +5591,9 @@
         "    release()\n",
         "\n",
         "ct = lambda: arethreadsworking(config.setupthreads)\n",
+        "if ct():\n",
+        "    for thread in config.setupthreads:\n",
+        "        thread.join()\n",
         "\n",
         "init = True\n",
         "info(\"Cell execution done.\")\n",
@@ -5601,6 +5605,7 @@
         "    display(container, Javascript(js))\n",
         "\n",
         "# using Javascript is persisted in the output\n",
+        "# when cell done executing with setup thread running in the background, output is cleared.\n",
         "# to debug and see exceptions turn off all back threads."
       ]
     },
