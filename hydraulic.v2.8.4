@@ -8,7 +8,7 @@
         "id": "6mYSH1yDOwvw"
       },
       "outputs": [],
-      "source": [
+      "source":  [
         "#@title { form-width: \"2%\" }\n",
         "#@markdown\n",
         "# \n",
@@ -1368,7 +1368,7 @@
         "    site = ''\n",
         "    tab = None\n",
         "    resultpages = None\n",
-        "\n",
+        "    sorters = None\n",
         "    def actionhandler(self, e):\n",
         "        pass\n",
         "\n",
@@ -1384,6 +1384,7 @@
         "        self.resultstablecolumnwidths = imdbresultstablecolumnwidths\n",
         "        self.resultstablecolumnalignments = imdbresultstablecolumnalignments\n",
         "        self.resultstableformatters = imdbresultstableformatters\n",
+        "        self.sorters = [{'field': 'Downloaded', 'dir': 'asc'},]\n",
         "        self.tab = nav[IMDB_TAB]\n",
         "        self.site = IMDB\n",
         "        self.downloadedtitlespages = dict()\n",
@@ -1441,6 +1442,7 @@
         "        self.resultstablecolumnwidths = searchresultstablecolumnwidths\n",
         "        self.resultstablecolumnalignments = searchresultstablecolumnalignments\n",
         "        self.resultstableformatters = searchresultstableformatters\n",
+        "        self.sorters = []\n",
         "        self.tab = nav[SEARCH_TAB]\n",
         "\n",
         "    def actionhandler(self, e):\n",
@@ -5026,6 +5028,7 @@
         "                                            show_index= False, \n",
         "                                            pagination= None,\n",
         "                                            formatters= result.resultstableformatters,\n",
+        "                                            sorters= result.sorters\n",
         "                                            configuration= {\n",
         "                                            'rowHeight': 30,\n",
         "                                            'columnDefaults': {'headerSort': True,}})\n",
