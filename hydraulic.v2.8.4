@@ -8,7 +8,7 @@
         "id": "6mYSH1yDOwvw"
       },
       "outputs": [],
-      "source":  [
+      "source": [
         "#@title { form-width: \"2%\" }\n",
         "#@markdown\n",
         "# \n",
@@ -1384,7 +1384,7 @@
         "        self.resultstablecolumnwidths = imdbresultstablecolumnwidths\n",
         "        self.resultstablecolumnalignments = imdbresultstablecolumnalignments\n",
         "        self.resultstableformatters = imdbresultstableformatters\n",
-        "        self.sorters = [{'field': 'Downloaded', 'dir': 'asc'},]\n",
+        "        self.sorters = [{'field': 'Downloaded', 'dir': 'desc'},]\n",
         "        self.tab = nav[IMDB_TAB]\n",
         "        self.site = IMDB\n",
         "        self.downloadedtitlespages = dict()\n",
@@ -5028,7 +5028,7 @@
         "                                            show_index= False, \n",
         "                                            pagination= None,\n",
         "                                            formatters= result.resultstableformatters,\n",
-        "                                            sorters= result.sorters\n",
+        "                                            sorters= result.sorters,\n",
         "                                            configuration= {\n",
         "                                            'rowHeight': 30,\n",
         "                                            'columnDefaults': {'headerSort': True,}})\n",
