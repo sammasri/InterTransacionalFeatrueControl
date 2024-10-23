@@ -2076,6 +2076,8 @@
         "        return get_adddownload_error(result, f\"Tor file path is empty, or file doesn't exists {attrs.name}\")\n",
         "    try:\n",
         "        if attrs.add_source == LOCALFILE_ADDSOURCE:\n",
+        "            # This error appear when using lt.torrent_info with an invild torrent file   \n",
+        "            # RuntimeError: expected value (list, dict, int or string) in bencoded string [bdecode:4]\n",
         "            ti = lt.torrent_info(attrs.torfile)\n",
         "            infohash_sha1 = ti.info_hash()\n",
         "            attrs.name = ti.name()\n",
