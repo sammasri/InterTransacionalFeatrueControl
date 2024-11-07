@@ -11,11 +11,11 @@
    "source": [
     "#@title { form-width: \"2%\" }\n",
     "#@markdown\n",
-    "# chk 01\n",
+    "# chk 00\n",
     "\n",
     "dev = False #@param {type:\"boolean\"}\n",
     "Save_To_Drive = True #@param {type:\"boolean\"}\n",
-    "Save_To_FTP = False #@param {type:\"string\"}\n",
+    "Save_To_FTP = False #@param {type:\"boolean\"}\n",
     "Remote_Downloads_Path = \"/Downloads\" #@param {type:\"string\"}\n",
     "Remote_Movie_Library_Path = \"/Movies\" #@param {type:\"string\"}\n",
     "Remote_TV_Library_Path = \"/TV\" #@param {type:\"string\"}\n",
