@@ -11,7 +11,7 @@
       "source": [
        "#@title { form-width: \"2%\" }\n",
        "#@markdown\n",
-       "# v.3.8.2.7a\n",
+       "# v.3.8.3.0a\n",
        "\n",
        "dev = False #@param {type:\"boolean\"}\n",
        "Save_To_Drive = True #@param {type:\"boolean\"}\n",
@@ -174,7 +174,7 @@
        "        if self.log_drv and os.path.exists(self.log_drv) and os.path.isfile(LOG_FILE):\n",
        "            !rsync -I \"$log_file\" \"$log_drv_file\"\n",
        "    \n",
-       "    def append_lines_to_file(filename, lines = None):\n",
+       "    def append_lines_to_file(self, filename, lines = None):\n",
        "        if lines:\n",
        "            try:\n",
        "                with open(filename, \"a+\") as file:\n",
