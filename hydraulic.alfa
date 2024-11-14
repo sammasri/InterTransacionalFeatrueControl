@@ -1451,7 +1451,7 @@
        "                        subfile = fileextension in subtitlefile_extensions\n",
        "                        filetype = \"Other\" if not (videofile or subfile) else (\"Video\" if videofile else \"Subtitle\")\n",
        "                        size = os.path.getsize(originalfilepath)\n",
-       "                        logger.info(f\"Processing file: ({filetype} {data_str(size)}) {originalfilepath}\")\n",
+       "                        logger.info(f\"Processing file: {originalfilepath}\\n(Type:{filetype} {data_str(size)} Extension:{fileextension}) \")\n",
        "                        if any(contains(filename, check) for check in skip_list):\n",
        "                            file_command(\"rm\", originalfilepath)\n",
        "                        elif videofile or subfile:\n",
