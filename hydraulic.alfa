@@ -4575,7 +4575,7 @@
        "    userinputview_vbox.name = \"User Decision\"\n",
        "    return userinputview_vbox\n",
        "\n",
-       "def get_action_box_view(title, description, action_handlers: tuple[function], actions= (\"Yes\", \"No\")):\n",
+       "def get_action_box_view(title, description, action_handlers, actions= (\"Yes\", \"No\")):\n",
        "    primaryAction_btn = Button(description= actions[0], layout= userinputbtn_layout)\n",
        "    secondaryAction_btn = Button(description= actions[1], layout= userinputbtn_layout)\n",
        "    primaryAction_btn.on_click(action_handlers[0])\n",
