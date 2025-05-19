@@ -6,7 +6,13 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "\n",
+    "#@title { form-width: \"2%\" }\n",
+    "#@markdown ### Drive\n",
+    "\n",
+    "import os\n",
     "from google.colab import drive\n",
+    " \n",
     "if not os.path.exists('/content/drive'):\n",
     "    drive.mount('/content/drive')"
    ]
@@ -25,11 +31,11 @@
     "#@markdown ### Start\n",
     "\n",
     "build_version = \"stable\" #@param [\"stable\", \"beta\"]\n",
-    "automatically_clear_cell_output = False  # @param{type: \"boolean\"}\n",
+    "automatically_clear_cell_output = True  # @param{type: \"boolean\"}\n",
     "# ================================================================ #\n",
     "\n",
     "import os\n",
-    "import IPython\n",
+    "import IPython\t\n",
     "from IPython.display import clear_output\n",
     "\n",
     "\n",
@@ -41,6 +47,7 @@
     "!sudo apt-get -y install fuse3\n",
     "\n",
     "os.makedirs(\"/root/.config/rclone\", exist_ok=True)\n",
+    "!mv \"/content/rclone.conf\" \"/root/.config/rclone\"\n",
     "\n",
     "if automatically_clear_cell_output is True:\n",
     "\tclear_output()"
@@ -287,6 +294,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "#@title { form-width: \"2%\" }\n",
     "#@markdown <font size=5>rclone WebUI Configuration</font><br>\n",
     "#@markdown rclone WebUI Default Credential\n",
     "#@markdown >Username: user</br>Password: pass\n",
@@ -365,6 +373,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "#@title { form-width: \"2%\" }\n",
     "# @markdown <font size=5>rclone CLI Configuration</font>\n",
     "# @markdown <p>Run this cell to create and/or edit an rclone configuration.</p>\n",
     "# @markdown > After you have created a configuration, download the configuration file.</br>In the next time you want to mount an rclone drive, simply import the configuration file.\n",
@@ -687,6 +696,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "#@title { form-width: \"2%\" }\n",
     "# @markdown <font size=5>Mount/Unmount rclone Drive (Optional)</font>\n",
     "# @markdown Mount a remote drive as a local drive on a mountpoint.\n",
     "\n",
@@ -803,6 +813,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "#@title { form-width: \"2%\" }\n",
     "# @markdown <font size=5>Upload Configuration File </font>\n",
     "# @markdown <p>If you already have an rclone configuration file, you can upload it by running this cell.</p>\n",
     "\n",
@@ -904,6 +915,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "#@title { form-width: \"2%\" }\n",
     "# @markdown <font size=5>Download Configuration File </font>\n",
     "# @markdown <p>Download configuration file from the VM into your local machine.</p>\n",
     "\n",
@@ -953,7 +965,9 @@
    "execution_count": null,
    "metadata": {},
    "outputs": [],
-   "source": []
+   "source": [
+    "#@title { form-width: \"2%\" }\n"
+   ]
   }
  ],
  "metadata": {
