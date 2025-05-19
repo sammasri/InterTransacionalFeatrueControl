@@ -3,18 +3,89 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
     "\n",
     "#@title { form-width: \"2%\" }\n",
     "#@markdown ### Drive\n",
     "\n",
-    "import os\n",
+    "import os, re, pytz\n",
+    "from datetime import date, datetime\n",
+    "\n",
     "from google.colab import drive\n",
     " \n",
     "if not os.path.exists('/content/drive'):\n",
-    "    drive.mount('/content/drive')"
+    "    drive.mount('/content/drive')\n",
+    "\n",
+    "tz = pytz.timezone('Turkey')\n",
+    "size_limit = 20000\n",
+    "\n",
+    "ext_re = r\"\\.\\w+$\"\n",
+    "extdot_re = r\"\\.(?=\\w+$)\"\n",
+    "file_re = r\"^.*\\.[A-Z,a-z,0-9]+$\"\n",
+    "url_re = r\"((http[s]?):\\/\\/)?([^:\\/\\s]+)((\\/\\w+\\/)*\\/)([\\w\\-\\.]+[^#?\\s]+)(.*)?(#[\\w\\-]+)?\"\n",
+    "file_url_re = r\"((http[s]?):\\/\\/)?([^:\\/\\s\\\"<>(\\\\n)]+)((\\/\\w{3}\\/)*\\/)([\\w\\-\\.]+[^#?\\s\\\"<>(\\\\n)]+)([^:\\/\\s\\\"<>(\\\\n)].*)?(#[\\w\\-]+)?\"\n",
+    "exlessbase = lambda path: os.path.basename(os.path.splitext(path)[0])\n",
+    "\n",
+    "nowstr = lambda separete = False: datetime.now(tz).strftime(\"%y-%m-%d-%H-%M-%S\") if separete else str(round(time.time()))\n",
+    "\n",
+    "def has_size(path, only_check = True):\n",
+    "    size = 0\n",
+    "    if not os.path.exists(path):\n",
+    "        return 0\n",
+    "    if os.path.isfile(path):\n",
+    "        size = os.path.getsize(path)\n",
+    "    else:  \n",
+    "        for path, dirs, files in os.walk(path):\n",
+    "            for f in files:\n",
+    "                fp = os.path.join(path, f)\n",
+    "                size += os.path.getsize(fp)\n",
+    "                if only_check and size >= size_limit:\n",
+    "                    return size\n",
+    "    if size >= size_limit:\n",
+    "        return size\n",
+    "    else:\n",
+    "        return 0\n",
+    "\n",
+    "def is_zip(name):\n",
+    "    sch = re.search(ext_re, name)\n",
+    "    if sch:\n",
+    "        res = sch.group()\n",
+    "        return res == '.zip' or res == '.gz' or res == '.rar' or res == '.7z'\n",
+    "    return False  \n",
+    "\n",
+    "def zip(input, save: str = \"\", split = \"\", callback = None):\n",
+    "    save = save.strip()\n",
+    "    if input:\n",
+    "        if not save:\n",
+    "            save = f\"zipped-files-{nowstr(True)}.zip\"\n",
+    "        else:  \n",
+    "            if not (is_zip(save)):\n",
+    "                save += \".zip\"\n",
+    "        split_arg = f\" -s {split} \" if split else \"\"\n",
+    "        print(f\"Zipping: {input}\\nTo: {save}\")\n",
+    "        cm = f'zip -r -q {split_arg} \"{save}\" \"{input}\"'\n",
+    "        print(cm)\n",
+    "        !zip -r -q $split_arg \"$save\" \"$input\"\n",
+    "        if has_size(save):\n",
+    "            print(f'Done, check output: {save}')\n",
+    "\n",
+    "def unzip(input, save: str = \"\", callback = None):\n",
+    "    save = save.strip()\n",
+    "    if input:\n",
+    "        print(f\"Unzipping: {input}\\nTo: {save}\")\n",
+    "        saving = \"-d \" + f'\"{save}\"' if save else \"\"\n",
+    "        !unzip \"$input\" $saving\n",
+    "        print(f'Done, check output: {save}')\n",
+    " \n",
+    "def FolderSize(path):\n",
+    "    print(f\"Checking size for path: {path}\")\n",
+    "    size = pathsize(path, True)\n",
+    "    print(f\"    {size}\")\n"
    ]
   },
   {
@@ -291,7 +362,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
     "#@title { form-width: \"2%\" }\n",
@@ -370,7 +444,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
     "#@title { form-width: \"2%\" }\n",
@@ -693,7 +770,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
     "#@title { form-width: \"2%\" }\n",
@@ -810,7 +890,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
     "#@title { form-width: \"2%\" }\n",
@@ -912,14 +995,16 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
     "#@title { form-width: \"2%\" }\n",
     "# @markdown <font size=5>Download Configuration File </font>\n",
     "# @markdown <p>Download configuration file from the VM into your local machine.</p>\n",
     "\n",
-    "# @markdown ---\n",
     "MODE = \"RCONFIG\" # @param ['UTILS', 'RCONFIG']\n",
     "# ================================================================ #\n",
     "\n",
@@ -945,9 +1030,15 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
    "outputs": [],
    "source": [
+    "#@title { form-width: \"2%\" }\n",
+    "# @markdown <font size=5>Mounting</font>\n",
+    "\n",
     "cmd = rf\"rclone mount drive1: /content/drive1\" \\\n",
     "      ' --user-agent \"Mozilla\"' \\\n",
     "      ' --buffer-size 256M' \\\n",
@@ -963,7 +1054,40 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
+   "outputs": [],
+   "source": [
+    "#@title { form-width: \"2%\" }\n",
+    "# @markdown <font size=5>Zip</font>\n",
+    "\n",
+    "Input = \"\" #@param {type:\"string\"}\n",
+    "SaveTo = \"\" #@param {type:\"string\"}\n",
+    "Op = \"Zip\" #@param [\"Zip\", \"Unzip\"] type:\"raw\"\n",
+    "\n",
+    "\n",
+    "if os.path.exists(Input):\n",
+    "    if Op == \"Zip\":\n",
+    "        zip(Input, SaveTo)\n",
+    "\n",
+    "           # !zip -r -q -j -9 $SaveTo $Input\n",
+    "    elif Op == \"Unzip\":\n",
+    "        if os.path.exists(SaveTo):\n",
+    "            print(\"File already exists!\")\n",
+    "        else:\n",
+    "            unzip(Input, SaveTo)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW5"
+   },
    "outputs": [],
    "source": [
     "#@title { form-width: \"2%\" }\n"
