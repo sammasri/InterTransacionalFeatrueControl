@@ -294,8 +294,7 @@
     "Source = \"\" #@param {type:\"string\"}\n",
     "Destination = \"\" #@param {type:\"string\"}\n",
     "\n",
-    "#@markdown ---\n",
-    "#@markdown <h3><font color=\"#3399ff\"><b>Global Configuration </b></font></h3>\n",
+    "#@markdown <b>Global Configuration</b>\n",
     "Extra_Arguments = \"\" #@param {type:\"string\"}\n",
     "Compare = \"Size & Mod-Time\" #@param [\"Size & Mod-Time\", \"Size & Checksum\", \"Only Mod-Time\", \"Only Size\", \"Only Checksum\"]\n",
     "Checkers = 5 #@param {type:\"slider\", min:1, max:40, step:1}\n",
@@ -310,11 +309,11 @@
     "Skip_files_that_are_newer_on_the_destination = False #@param {type:\"boolean\"}\n",
     "Output_Log_File = \"OFF\" #@param [\"OFF\", \"NOTICE\", \"INFO\", \"ERROR\", \"DEBUG\"]\n",
     "\n",
-    "#@markdown <br><h3><font color=\"#3399ff\"><b> Sync Configuration </b></font></h3>\n",
+    "#@markdown <br><b> Sync Configuration </b>\n",
     "Sync_Mode = \"Delete during transfer\" #@param [\"Delete during transfer\", \"Delete before transfering\", \"Delete after transfering\"]\n",
     "Track_Renames = False #@param {type:\"boolean\"}\n",
     "\n",
-    "#@markdown <br><h3><font color=\"#3399ff\"><b>Deduplicate Configuration </b></font></h3>\n",
+    "#@markdown <b>Deduplicate Configuration </b>\n",
     "Deduplicate_Mode = \"Interactive\" #@param [\"Interactive\", \"Skip\", \"First\", \"Newest\", \"Oldest\", \"Largest\", \"Rename\"]\n",
     "Deduplicate_Use_Trash = True #@param {type:\"boolean\"}\n",
     "\n",
@@ -452,7 +451,6 @@
     "elif Mode == \"Empty Trash\":\n",
     "    !rclone --config=/root/.config/rclone/rclone.conf cleanup \"$sourceC\" $statsC $loglevelC $dryrunC $extraC\n",
     "\n",
-    "\n",
     "##### Log Output\n",
     "if Output_Log_File != \"OFF\" and Mode != \"Config\":\n",
     "\n",
@@ -495,12 +493,10 @@
     "    else:\n",
     "        clear_output()\n",
     "        print(\"There is no log file\")\n",
-    "    \n",
     "\n",
     "### Operation has been successfully completed.\n",
     "if Mode != \"Config\":\n",
     "    print(\"Operation has been successfully completed\")\n",
-    "\n",
     "\n",
     "##### Automatically clear terminal output if the checkbox's value on the top is set to True.\n",
     "if automatically_clear_cell_output is True:\n",
@@ -1204,7 +1200,7 @@
    },
    "outputs": [],
    "source": [
-    "#@title { form-width: \"2%\" }\n"
+    "#@title &nbsp;&nbsp;&nbsp; Nothing{ form-width: \"2%\" }\n"
    ]
   }
  ],
