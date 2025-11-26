@@ -1287,7 +1287,10 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW5"
+   },
    "outputs": [],
    "source": [
     "#@title &nbsp;&nbsp;&nbsp; Nothing{ form-width: \"2%\" }\n"
