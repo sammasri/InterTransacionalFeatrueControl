@@ -653,6 +653,21 @@
    },
    "outputs": [],
    "source": [
+    "#@title &nbsp;&nbsp;&nbsp; Delete Files { form-width: \"2%\" }\n",
+    "\n",
+    "for f in zipFiles:\n",
+    "    os.remove(f)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
+   "outputs": [],
+   "source": [
     "#@title &nbsp;&nbsp;&nbsp; Setup Reclone { form-width: \"2%\" }\n",
     " \n",
     "build_version = \"stable\" #@param [\"stable\", \"beta\"]\n",
