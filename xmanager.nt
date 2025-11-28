@@ -668,7 +668,7 @@
    },
    "outputs": [],
    "source": [
-    "#@title &nbsp;&nbsp;&nbsp; Setup Reclone { form-width: \"2%\" }\n",
+    "#@title &nbsp;&nbsp;&nbsp; Setup Rcl0ne with Config File{ form-width: \"2%\" }\n",
     " \n",
     "build_version = \"stable\" #@param [\"stable\", \"beta\"]\n",
     "automatically_clear_cell_output = True  # @param{type: \"boolean\"}\n",
@@ -691,6 +691,28 @@
     "\n",
     "if automatically_clear_cell_output is True:\n",
     "\tclear_output()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "cellView": "form",
+    "id": "ZqEu3vDTqnW2"
+   },
+   "outputs": [],
+   "source": [
+    "#@title &nbsp;&nbsp;&nbsp; Simple Rcl0ne{ form-width: \"2%\" }\n",
+    "\n",
+    "Source = \"\" #@param {type:\"string\"}\n",
+    "Destination = \"\" #@param {type:\"string\"}\n",
+    "Op = \"Move\" #@param [\"Copy\", \"Move\"] {type:\"string\"}\n",
+    "\n",
+    "if os.path.exists(Source):\n",
+    "    basename = os.path.basename(Source)\n",
+    "    op = \"copy\" if Op == \"Copy\" else \"move\"\n",
+    "    cmd = f'rclone {op} -P --no-traverse \"{Source}\" drv2:\"{Destination}/{basename}\"'\n",
+    "    !$cmd"
    ]
   },
   {
