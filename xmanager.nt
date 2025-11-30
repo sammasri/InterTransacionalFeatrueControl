@@ -2384,6 +2384,9 @@
     "# use -n to avoide overwriting files.\n",
     "# mv -n source dir/* destination_dir/\n",
     "# mv -n \"source dir\"/* \"destination_dir/\"\n",
+    "\n",
+    "# Smarter behavior where it does overwrite only if the source file is newer than the destination file, use -u.\n",
+    "# mv -u source_dir/* destination_dir/\n",
     "# with overwrite:\n",
     "#  # mv \"source dir\"/* \"destination dir/\" && rm -r \"source dir\""
    ]
