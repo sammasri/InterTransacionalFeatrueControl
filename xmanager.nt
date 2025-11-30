@@ -2378,7 +2378,14 @@
     "# cp move & merge: \n",
     "#   cp -r dir1/* dir2/ && rm -rf dir1/*\n",
     "# in mv you need to go to each subdir and move files to avoid overwriting same-named dirs.\n",
-    "# in some cases only mv can be used. Like exceeding drive qouta for example.\n"
+    "# in some cases only mv can be used. Like exceeding drive qouta for example.\n",
+    "# use mv to merge direct dirs only without merging duplicate subdirs.\n",
+    "# moving dirs and files inside Google Drive doesn't cause exceeding qouta.\n",
+    "# use -n to avoide overwriting files.\n",
+    "# mv -n source dir/* destination_dir/\n",
+    "# mv -n \"source dir\"/* \"destination_dir/\"\n",
+    "# with overwrite:\n",
+    "#  # mv \"source dir\"/* \"destination dir/\" && rm -r \"source dir\""
    ]
   }
  ],
