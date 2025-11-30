@@ -2371,8 +2371,14 @@
    "source": [
     "#@title &nbsp;&nbsp;&nbsp; Nothing { form-width: \"5%\" }\n",
     "\n",
-    "#  cp -r \"/content/sample_data/anscombe.json\" \"/content\"\n",
-    "#  cp \"/content/sample_data/anscombe.json\" \"/content/sample_data/california_housing_test.csv\" \"/content/sample_data/california_housing_train.csv\" \"/content\""
+    "# rsync copy & merge: \n",
+    "#   rsync -a --size-only --info=progress2 -h \"needs quoting/\" \"another one/\"\n",
+    "# rsync move & merge: \n",
+    "#   rsync -a --size-only --info=progress2 -h --remove-source-files \"needs quoting/\" \"another one/\"\n",
+    "# cp move & merge: \n",
+    "#   cp -r dir1/* dir2/ && rm -rf dir1/*\n",
+    "# in mv you need to go to each subdir and move files to avoid overwriting same-named dirs.\n",
+    "# in some cases only mv can be used. Like exceeding drive qouta for example.\n"
    ]
   }
  ],
